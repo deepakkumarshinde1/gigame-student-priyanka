@@ -3,6 +3,7 @@ import "./App.css";
 function App() {
   let [inputText, setInputText] = useState("");
   let [list, setList] = useState([]);
+  let [toggle, setToggle] = useState(false);
 
   let onChangeHandler = (event) => {
     setInputText(event.target.value);
@@ -18,12 +19,28 @@ function App() {
       <section>
         <input type="text" value={inputText} onChange={onChangeHandler} />
         <button onClick={addTodo}>Save Todo</button>
+        <button>Toggle</button>
+
+        <div className="toggle-container">
+          <label className="toggle-switch">
+            <input
+              type="checkbox"
+              onChange={() => {
+                setToggle(!toggle);
+              }}
+              checked={toggle}
+            />
+            <span className="slider"></span>
+          </label>
+
+          <p className="toggle-text">Status:{toggle ? "True" : "False"} </p>
+        </div>
       </section>
       <section>
         <ul>
-          <li>Item-1</li>
-          <li>Item-1</li>
-          <li>Item-1</li>
+          {list.map((value, index) => {
+            return <li key={index}>{value}</li>;
+          })}
         </ul>
       </section>
     </>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Counter() {
   let [counter, setCounter] = useState(0); // [value, function to update value]
@@ -12,6 +12,17 @@ function Counter() {
   let inc = () => {
     setCounter(counter + 1);
   };
+
+  useEffect(() => {}, []); // mounting
+
+  useEffect(() => {}, [state, props]); // updating
+
+  useEffect(() => {
+    return () => {
+      // unmounting
+    };
+  }, []); // mounting
+
   return (
     <>
       <h1>Counter {counter} </h1>
