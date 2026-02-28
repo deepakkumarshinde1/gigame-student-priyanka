@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
+import Counter from "./Counter";
 function App() {
   let [inputText, setInputText] = useState("");
   let [list, setList] = useState([]);
@@ -43,6 +44,7 @@ function App() {
           })}
         </ul>
       </section>
+      <Counter />
     </>
   );
 }

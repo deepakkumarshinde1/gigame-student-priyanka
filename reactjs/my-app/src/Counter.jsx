@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 
 function Counter() {
@@ -13,14 +14,25 @@ function Counter() {
     setCounter(counter + 1);
   };
 
-  useEffect(() => {}, []); // mounting
+  // useEffect(() => {}, []); // mounting
 
-  useEffect(() => {}, [state, props]); // updating
+  // useEffect(() => {}, [state, props]); // updating
+
+  // useEffect(() => {
+  //   return () => {
+  //     // unmounting
+  //   };
+  // }, []); // mounting
+
+  let getData = async () => {
+    let { data } = await axios.get(
+      "https://jsonplaceholder.typicode.com/users",
+    );
+    console.log(data);
+  };
 
   useEffect(() => {
-    return () => {
-      // unmounting
-    };
+    getData();
   }, []); // mounting
 
   return (
@@ -38,3 +50,5 @@ export default Counter;
 // v16.8+
 // inbuilt hooks ( react js ), 3rd party hooks ( other lib ), custom hooks ( self )
 // useState => to manage state in functional component
+
+// init => render => mounting
