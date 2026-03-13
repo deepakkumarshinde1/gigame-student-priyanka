@@ -1,5 +1,6 @@
 import React from "react";
 import { useUserContext } from "../context/user.context";
+import { NavLink } from "react-router-dom";
 
 function Header() {
   let { username } = useUserContext();
